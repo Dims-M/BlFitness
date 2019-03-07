@@ -42,12 +42,12 @@ namespace CodeBlogFitness.BL.Model
 
             if (birthDate < DateTime.Parse("01.01.1900"))
             {
-                throw new ArgumentException(""); 
+                throw new ArgumentException("Некоректнная дата рождения",nameof(birthDate)); 
             }
 
             if (weight <=0 )
             {
-
+                
             }
 
             if (height <= 0)
