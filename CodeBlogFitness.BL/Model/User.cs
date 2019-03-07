@@ -17,9 +17,44 @@ namespace CodeBlogFitness.BL.Model
 
         public double Height { get; set; } // рост
 
-        public User(string name, Gender gender, DateTime birthDate,double weight, double height)
+        private string textLpg = "Лог работы";
+        private string textErrors = "Ошибки в работе:";
+
+
+        public User(string name, 
+                    Gender gender, 
+                    DateTime birthDate, 
+                    double weight, 
+                    double height)
         {
+            //Проверки на коректные данные при создании пользователя
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentNullException("Имя пользователя не может быть пустым", nameof(name));
+                
+            }
             Name = name;
+
+            if (gender == null)
+            {
+                throw new ArgumentNullException("Имя пользователя не может быть пустым", nameof(gender));
+            }
+
+            if (birthDate < DateTime.Parse("01.01.1900"))
+            {
+                throw new ArgumentException(""); 
+            }
+
+            if (weight <=0 )
+            {
+
+            }
+
+            if (height <= 0)
+            {
+
+            }
         }
+
     }
 }
