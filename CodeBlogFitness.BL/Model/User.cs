@@ -20,6 +20,7 @@ namespace CodeBlogFitness.BL.Model
         private string textLpg = "Лог работы";
         private string textErrors = "Ошибки в работе:";
 
+        //
 
         public User(string name, 
                     Gender gender, 
