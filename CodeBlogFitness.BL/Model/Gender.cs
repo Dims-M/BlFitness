@@ -9,7 +9,8 @@ namespace CodeBlogFitness.BL.Model
     /// <summary>
     /// Класс отвечающий за пол
     /// </summary>
-   public class Gender
+    [Serializable]
+    public class Gender
     {
         /// <summary>
         /// Имя, называние

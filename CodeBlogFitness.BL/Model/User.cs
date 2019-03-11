@@ -3,9 +3,10 @@
 namespace CodeBlogFitness.BL.Model
 {
     /// <summary>
-    /// Класс описывающий пользователя в программе.
+    /// Класс, описывающий пользователя в программе.
     /// </summary>
-    /// [Serializable]
+    
+     [Serializable] 
    public class User
     {
         #region Свойства класса. Переменыые
@@ -23,22 +24,19 @@ namespace CodeBlogFitness.BL.Model
         private string textLpg = "Лог работы";
         private string textErrors = "Ошибки в работе:";
 
-        //
-        /// <summary>
-        /// Конструктор класса User с параметрами
-        /// </summary>
-        /// <param name="name">Имя пользователя </param>
-        /// <param name="gender">Пол пользователя</param>
-        /// <param name="birthDate">День рождения пользователя</param>
-        /// <param name="weight">Вес пользователя</param>
-        /// <param name="height">Рост пользователя</param>
+        //Конструктор по умолчанию
+        public User(string userN)
+        {
+            Name = userN;
+        }
+        
         public User(string name, 
                     Gender gender, 
                     DateTime birthDate, 
                     double weight, 
                     double height)
+        #region Проверки на коректные данные при создании пользователя
         {
-            #region Проверки на коректные данные при создании пользователя
             //Проверки на коректные данные при создании пользователя
             if (string.IsNullOrWhiteSpace(name))
             {
@@ -70,6 +68,7 @@ namespace CodeBlogFitness.BL.Model
 
             #endregion
         }
+
         /// <summary>
         /// Переобределенный метод ToString класса User
         /// </summary>
