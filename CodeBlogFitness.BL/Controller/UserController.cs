@@ -19,17 +19,31 @@ namespace CodeBlogFitness.BL.Controller
         //  свойство для работы конкретным пользователем       
         public User User { get; }
 
+
+        //Конструктор в качестве параметра указывать пользователя c отрибутами
+        public UserController(string userName, string genderName, DateTime birthDay, double weight, double heigth)
+        {
+            //TODO; проверка  
+
+            var gender = new Gender(genderName);
+            //Создает конкретный обьект пользователя.(с параметрами)
+            var user = new User(userName, gender, birthDay, weight, heigth);
+
+            // Если произошла ошибка. Сработает исключение ArgumentNullException
+            User = user ?? throw new ArgumentNullException("Пользователь не может быть равен Null",nameof(user));
+        }
+
         /// <summary>
-        /// Конструктор без параметров.
+        /// Конструктор без параметров. с десерелезацией
         /// </summary>
         public UserController()
         {
             // обьект для работы с сериализацией
             var formatter = new BinaryFormatter();
             // стрим поток для работы с файлом
-            using (var fs = new FileStream("users.bat", FileMode.OpenOrCreate))
+            using (var fs = new FileStream("users.dat", FileMode.OpenOrCreate))
             {
-
+                // десерериализуем из стрима в обьект типа User
                 if (formatter.Deserialize(fs) is User user)
                 {
                     User = user;
@@ -38,32 +52,24 @@ namespace CodeBlogFitness.BL.Controller
             }
         }
 
-        //Конструктор в качестве параметра указывать пользователя c отрибутами
-        public UserController(string userName, string genderName, DateTime birthDay, double weight, double heigth  )
-        {
-            //TODO; проверка  
-           
-            var gender = new Gender(genderName);
-            var user = new User(userName, gender, birthDay, weight, heigth);
-
-            // Если произошла ошибка. Сработает исключение ArgumentNullException
-            //User = user ?? throw new ArgumentNullException("Пользователь не может быть равен Null",nameof(user));
-        }
+      
 
         /// <summary>
         /// Сохранение пользователя. С помощью сериализации
         /// </summary>
         /// <param name="User">Сериализация пользователя</param>
-        public void Save(User User)
+        public void Save()
         {
             // обьект для работы с сериализацией
             var formatter = new BinaryFormatter();
 
-            using (var fs = new FileStream("users.bat",FileMode.OpenOrCreate))
+            using (var fs = new FileStream("users.dat",FileMode.OpenOrCreate))
             {
+
                 formatter.Serialize(fs, User);
-               
-            }   
+
+                //TODO: Что делать при ошибке чтения файла 
+            }
         }
 
             /// <summary>

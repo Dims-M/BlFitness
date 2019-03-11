@@ -6,7 +6,7 @@ using System;
 namespace CodeBlogFitness.CMD
 {
     class Program
-    {  
+    {
         // запуск программы
         static void Main(string[] args)
         {
@@ -23,7 +23,7 @@ namespace CodeBlogFitness.CMD
             Console.WriteLine("Введите имя пользователя");
             var name = Console.ReadLine();
 
-            if (name.Length >=3)
+            if (name.Length >= 3)
             {
                 var user = new User(name);
             }
@@ -33,11 +33,21 @@ namespace CodeBlogFitness.CMD
 
             Console.WriteLine("Введите дату рождения");
             var birthdate = DateTime.Parse(Console.ReadLine());
-            
+            //TODO Переписать парсе даты рождения
 
+            Console.WriteLine("Введите вес"); // Используем обьекты Double.Parse для перевода строки в число 
+            var weight = double.Parse(Console.ReadLine());
 
+            Console.WriteLine("Введите рост");
+            var height = double.Parse(Console.ReadLine());
 
+            //Создаем контроллер. Он же создает конкретный обьект. И так же сеарилует его.
+            var userController = new UserController(name, gender, birthdate, weight, height);
+
+            //Сериализация обьекта
+            userController.Save();
+
+            Console.ReadKey(true);
         }
-
     }
 }

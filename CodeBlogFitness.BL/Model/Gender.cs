@@ -23,9 +23,9 @@ namespace CodeBlogFitness.BL.Model
         /// </summary>
         public Gender(string name)
         {
-            // проверка на кокектность входящих данных
+            //  проверка на кокектность входящих данных
             if (string.IsNullOrWhiteSpace(name))
-            {
+           {
                 //Вызываем искучение о ошибке в ручную
                 throw new ArgumentNullException("Имя пола не может быть пустым", nameof(name));
             }
