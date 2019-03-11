@@ -29,6 +29,8 @@ namespace CodeBlogFitness.BL.Model
                 throw new ArgumentNullException("Имя пола не может быть пустым", nameof(name));
             }
 
+           
+
             Name = name;
             
         }
