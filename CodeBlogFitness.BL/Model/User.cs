@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CodeBlogFitness.BL.Model
 {
@@ -76,6 +77,11 @@ namespace CodeBlogFitness.BL.Model
         public override string ToString()
         {
             return base.ToString();
+        }
+
+        public static implicit operator List<object>(User v)
+        {
+            throw new NotImplementedException();
         }
     }
 }

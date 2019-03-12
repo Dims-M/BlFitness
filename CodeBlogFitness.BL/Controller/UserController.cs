@@ -14,50 +14,74 @@ namespace CodeBlogFitness.BL.Controller
     /// </summary>
    public class UserController
     {
-        //Переменные
+   
+      /// <summary>
+      /// Список для хранения пользователей
+      /// </summary>
+        public List<User> Users { get; } //Список пользователей 
 
-        //  свойство для работы конкретным пользователем       
-        public User User { get; }
-
-
-        //Конструктор в качестве параметра указывать пользователя c отрибутами
-        public UserController(string userName, string genderName, DateTime birthDay, double weight, double heigth)
+        public User CurrentUser { get; } // текущий, активный пользователь
+        /// <summary>
+        /// Создание нового пользователя.
+        /// </summary>
+        /// <param name="userName">Имя пользователя</param>
+        public UserController(string userName)
         {
-            //TODO; проверка  
+            //Провека на коректность заплнения имени пользователя
+            if (string.IsNullOrWhiteSpace(userName))
+            {
+                throw new ArgumentNullException("Имя не может быть пустым ", nameof(userName));
+            }
+            Users = GetUsersData(); // получаем спсок пользователей. Или пустой список
+           
+            // получаем одного пользователя из списка Users и сравниваем со входящими именем. 
+            //Если такого пользователя нет. То получил null
+            CurrentUser = Users.SingleOrDefault(u => u.Name == userName); // c помощью линка using System.Linq
 
-            var gender = new Gender(genderName);
-            //Создает конкретный обьект пользователя.(с параметрами)
-            var user = new User(userName, gender, birthDay, weight, heigth);
-
-            // Если произошла ошибка. Сработает исключение ArgumentNullException
-            User = user ?? throw new ArgumentNullException("Пользователь не может быть равен Null",nameof(user));
         }
 
+        //Конструктор в качестве параметра указывать пользователя c отрибутами
+        //public UserController(string userName, string genderName, DateTime birthDay, double weight, double heigth)
+        //{
+        //    //TODO; проверка  
+
+        //    var gender = new Gender(genderName);
+        //    //Создает конкретный обьект пользователя.(с параметрами)
+        //    var user = new User(userName, gender, birthDay, weight, heigth);
+
+        //    // Если произошла ошибка. Сработает исключение ArgumentNullException
+        //    // User = user ?? throw new ArgumentNullException("Пользователь не может быть равен Null",nameof(user));
+        //}
+
         /// <summary>
-        /// Конструктор без параметров. с десерелезацией
+        /// Получить список пользователей из файла сеарилизации. Сохраненный.
         /// </summary>
-        public UserController()
+        private List<User> GetUsersData()
         {
             // обьект для работы с сериализацией
             var formatter = new BinaryFormatter();
+
             // стрим поток для работы с файлом
             using (var fs = new FileStream("users.dat", FileMode.OpenOrCreate))
             {
                 // десерериализуем из стрима в обьект типа User
-                if (formatter.Deserialize(fs) is User user)
+                if (formatter.Deserialize(fs) is List<User> users)
                 {
-                    User = user;
+                    return users; // возращаем лист с десериализованным списком пользователей
+                }
+
+                else
+                {
+                    return new List<User>(); // возврат нового пустого списка. 
                 }
                 //TODO: Что делать при ошибке чтения файла 
             }
+            
         }
 
       
 
-        /// <summary>
-        /// Сохранение пользователя. С помощью сериализации
-        /// </summary>
-        /// <param name="User">Сериализация пользователя</param>
+         
         public void Save()
         {
             // обьект для работы с сериализацией
@@ -66,7 +90,7 @@ namespace CodeBlogFitness.BL.Controller
             using (var fs = new FileStream("users.dat",FileMode.OpenOrCreate))
             {
 
-                formatter.Serialize(fs, User);
+                formatter.Serialize(fs, Users);
 
                 //TODO: Что делать при ошибке чтения файла 
             }
