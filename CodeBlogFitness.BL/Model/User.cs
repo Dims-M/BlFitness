@@ -13,22 +13,36 @@ namespace CodeBlogFitness.BL.Model
         #region Свойства класса. Переменыые
         public string Name { get;} //Только получаем свойства. Изменять не можем. Усанавливаем при создании экземпляра класса
 
-        public Gender Cender { get; } // Пол пользователя.  Является классом со своими свойствами
+        public Gender Cender { get; set; } // Пол пользователя.  Является классом со своими свойствами
 
-        public DateTime BirthDate { get; } // Дата рождения
+        public DateTime BirthDate { get; set; } // Дата рождения
 
         public double Weight { get; set; } // Вес пользователя
 
         public double Height { get; set; } // рост
+
+        /// <summary>
+        /// возращаем значения полученными путем вычисления текущей даты и вычитанием введеной даты дня рождения
+        /// </summary>
+        public int Age { get { return DateTime.Now.Year - BirthDate.Year; } }
+
         #endregion
 
         private string textLpg = "Лог работы";
         private string textErrors = "Ошибки в работе:";
 
         //Конструктор по умолчанию
-        public User(string userN)
+        public User(string name) 
         {
-            Name = userN;
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentNullException("Не коректное имя", nameof(name));
+            }
+            else
+            {
+                Name = name;
+            }
+           
         }
         
         public User(string name, 
@@ -76,12 +90,9 @@ namespace CodeBlogFitness.BL.Model
         /// <returns></returns>
         public override string ToString()
         {
-            return base.ToString();
+            return  Name + " " + Age;
         }
 
-        public static implicit operator List<object>(User v)
-        {
-            throw new NotImplementedException();
-        }
+      
     }
 }
