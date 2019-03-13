@@ -105,7 +105,8 @@ namespace CodeBlogFitness.BL.Controller
                 using (var fs = new FileStream("users.dat", FileMode.OpenOrCreate))
                 {
                     // десерериализуем из стрима в обьект типа User
-                    if (formatter.Deserialize(fs) is List<User> users)
+                    // доп проверки
+                    if ( fs.Length >0 && formatter.Deserialize(fs) is List<User> users)
                     {
                         return users; // возращаем лист с десериализованным списком пользователей
                     }
