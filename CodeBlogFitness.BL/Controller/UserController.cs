@@ -71,8 +71,10 @@ namespace CodeBlogFitness.BL.Controller
             #endregion
         }
 
+
+
         /// <summary>
-        /// 
+        /// Добавление нового пользователя в файл сериализации
         /// </summary>
         /// <param name="genderName"></param>
         /// <param name="BirthDate"></param>
@@ -89,12 +91,6 @@ namespace CodeBlogFitness.BL.Controller
 
             Save(); // сохраняем и сеаризуем данные
 
-
-            //Console.WriteLine("Введите пол:");
-            //var gender = Console.ReadLine();
-
-            //Console.WriteLine("Введите дату рождения:");
-            //var birthdate = DateTime.Parse(Console.ReadLine());
         }
 
         /// <summary>

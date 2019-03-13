@@ -51,12 +51,68 @@ namespace CodeBlogFitness.CMD
             Console.WriteLine(userController.CurrentUser);
             //Console.WriteLine();
 
+            // проверка. если истина то это новый пользователь. 
             if (userController.IsNewsUser)
             {
-                 
+                Console.WriteLine("Введите пол:");
+                var gender = Console.ReadLine();
+
+                DateTime birtDate; // дата рождения
+                double weight = ParsDouble("Вес");
+                double height = ParsDouble("Рост");
+
+                birtDate = ParseDateTime(); // метод для получение даты в консоли
+
+                //добавляем нового пользователя. И сразу сериализуем
+                userController.SetNewUserData(gender, birtDate, weight, height);
             }
 
             Console.ReadKey(true);
+        }
+
+        /// <summary>
+        /// Получение даты рождения пользователя
+        /// </summary>
+        /// <returns></returns>
+        private static DateTime ParseDateTime()
+        {
+            DateTime birtDate;
+            while (true)
+            {
+                Console.WriteLine("Введите дату рождения:(dd.MM.yy): ");
+                //var birthDate = Console.ReadLine();
+                if (DateTime.TryParse(Console.ReadLine(), out birtDate))
+                {
+                    break; // Выход из цикла
+                }
+
+                else
+                {
+                    Console.WriteLine("Неверный формат даты рождения");
+                }
+            }
+
+            return birtDate;
+        }
+
+        private static double ParsDouble(string name)
+        {
+            while (true)
+            {
+                Console.WriteLine($"Введите {name}: ");
+                //var birthDate = Console.ReadLine();
+                // добавляем в переменую volue ноаое имя
+                if (double.TryParse(Console.ReadLine(), out double volue)) // добавляем в переменую volue ноаое имя
+                {
+                    return volue;  
+                    break; // Выход из цикла
+                }
+
+                else
+                {
+                    Console.WriteLine($"Неверный формат {name}");
+                }
+            }
         }
     }
 }
