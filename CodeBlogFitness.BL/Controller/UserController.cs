@@ -121,7 +121,9 @@ namespace CodeBlogFitness.BL.Controller
 
 
 
-
+        /// <summary>
+        ///Метод Серилизации пользователей. Работает с со списком
+        /// </summary>
            public  void Save()
             {
                 // обьект для работы с сериализацией

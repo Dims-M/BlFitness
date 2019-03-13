@@ -94,7 +94,11 @@ namespace CodeBlogFitness.CMD
 
             return birtDate;
         }
-
+        /// <summary>
+        /// получение веса и роста
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         private static double ParsDouble(string name)
         {
             while (true)
@@ -105,7 +109,7 @@ namespace CodeBlogFitness.CMD
                 if (double.TryParse(Console.ReadLine(), out double volue)) // добавляем в переменую volue ноаое имя
                 {
                     return volue;  
-                    break; // Выход из цикла
+                    
                 }
 
                 else
