@@ -15,7 +15,24 @@ namespace CodeBlogFitness.BL.Controller.Tests
         [TestMethod()]
         public void SetNewUserDataTest()
         {
-            Assert.Fail();
+            // 1) Arrange
+            var userName = Guid.NewGuid().ToString();
+            var birthdate = DateTime.Now.AddYears(-18)  ; // дата рождения
+            var weight = 90;
+            var height = 190;
+            var gender = "man";
+            var controller = new UserController(userName); //получение контролера
+            //Assert.Fail(); // Выбить ошибку при тесте.
+           // controller.SetNewUserData(gender,birthdate,weight,height); // новый пользователь
+
+            // 2) Act - непосрественное действие. Когда вызываем что то
+            controller.SetNewUserData(gender,birthdate,weight,height); // новый пользователь
+            var  controller2 = new UserController(userName);
+
+            //3) Assert - Проверка того что получилось
+            Assert.AreEqual(userName, controller2.CurrentUser.Name);
+           // Assert.AreEqual(userName, controller2.CurrentUser.BirthDate);
+          //  Assert.AreEqual(userName, controller2.CurrentUser.Cender);
         }
 
         [TestMethod()]
