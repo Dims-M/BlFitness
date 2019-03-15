@@ -14,7 +14,7 @@ namespace CodeBlogFitness.BL.Controller.Tests
        
         [TestMethod()]
         public void SetNewUserDataTest()
-        {
+        { 
             // 1) Arrange
             var userName = Guid.NewGuid().ToString();
             var birthdate = DateTime.Now.AddYears(-18)  ; // дата рождения
