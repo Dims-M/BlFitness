@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace CodeBlogFitness.BL.Model
 {
+ 
     public class Eating
     {
         /// <summary>
@@ -18,9 +19,9 @@ namespace CodeBlogFitness.BL.Model
         public Dictionary<Food, double> Foods {get;} // Словарь. В качестве ключа будет выступать еда. В качесве значения кличество
 
         /// <summary>
-        /// Пользователь. Кто, что, кушал
+        /// Пользователь. Кто, что, кушал. Свойство
         /// </summary>
-        public User User { get; }
+        public User User { get; } 
 
         //Конструктор
         public Eating(User user)
@@ -30,6 +31,12 @@ namespace CodeBlogFitness.BL.Model
             Foods = new Dictionary<Food, double>(); // Инициализация словаря.
         }
 
+
+        /// <summary>
+        /// Метод добавляет в словарь саму еду и ее количество.
+        /// </summary>
+        /// <param name="food"></param>
+        /// <param name="weight"></param>
         public void Add(Food food, double weight)
         {
            // Foods.TryGetValue(); /// Сравнение по сслыкам не работает. Если значимые типо работает хорошо
