@@ -26,8 +26,9 @@ namespace CodeBlogFitness.BL.Model
         //Конструктор
         public Eating(User user)
         {
-            User = user ?? throw new ArgumentNullException("Пользователь не может быть пустым",nameof(user);
+            User = user ?? throw new ArgumentNullException("Пользователь не может быть пустым",nameof(user));
             Moment = DateTime.UtcNow;
+            
             Foods = new Dictionary<Food, double>(); // Инициализация словаря.
         }
 

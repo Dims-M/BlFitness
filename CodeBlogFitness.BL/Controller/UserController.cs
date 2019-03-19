@@ -12,7 +12,7 @@ namespace CodeBlogFitness.BL.Controller
     /// <summary>
     /// Контролер по управлением классом user Логика работы с пользовтелем. 
     /// </summary>
-    public class UserController
+    public class UserController : ControllerBase
     {
 
         /// <summary>
@@ -20,13 +20,13 @@ namespace CodeBlogFitness.BL.Controller
         /// </summary>
         public List<User> Users { get; } //Список пользователей 
 
-        public User CurrentUser { get;  } // текущий, активный пользователь
+        public User CurrentUser { get; } // текущий, активный пользователь
 
         /// <summary>
         /// указатель на нового пользователя для разраничения новых и ранее добавленных
         /// </summary>
         public bool IsNewsUser { get; } //   
-        
+
         /// <summary>
         /// Создание нового пользователя.
         /// </summary>
@@ -80,7 +80,7 @@ namespace CodeBlogFitness.BL.Controller
         /// <param name="BirthDate"></param>
         /// <param name="weight"></param>
         /// <param name="height"></param>
-        public void SetNewUserData(string genderName, DateTime BirthDate, double weight=1, double height=1)
+        public void SetNewUserData(string genderName, DateTime BirthDate, double weight = 1, double height = 1)
         {
             //Проверка на коректность заполнения
 
@@ -97,79 +97,89 @@ namespace CodeBlogFitness.BL.Controller
         /// Получить список пользователей из файла сеарилизации. Сохраненный.
         /// </summary>
         List<User> GetUsersData()
-            {
-                // обьект для работы с сериализацией
-                var formatter = new BinaryFormatter();
+        {
+            // переделаный метод из абстрактного класса
+            return Load<List<User>>("users.dat", Users) ?? new List<User>();
 
-                // стрим поток для работы с файлом
-                using (var fs = new FileStream("users.dat", FileMode.OpenOrCreate))
-                {
-                    // десерериализуем из стрима в обьект типа User
-                    // доп проверки
-                    if ( fs.Length >0 && formatter.Deserialize(fs) is List<User> users)
-                    {
-                        return users; // возращаем лист с десериализованным списком пользователей
-                    }
+            #region Устаревших код. Не успользуется
 
-                    else
-                    {
-                        return new List<User>(); // возврат нового пустого списка. 
-                    }
-                    //TODO: Что делать при ошибке чтения файла 
-                }
+            // обьект для работы с сериализацией
+            //var formatter = new BinaryFormatter();
 
-            }
+            //    // стрим поток для работы с файлом
+            //    using (var fs = new FileStream("users.dat", FileMode.OpenOrCreate))
+            //    {
+            //        // десерериализуем из стрима в обьект типа User
+            //        // доп проверки
+            //        if ( fs.Length >0 && formatter.Deserialize(fs) is List<User> users)
+            //        {
+            //            return users; // возращаем лист с десериализованным списком пользователей
+            //        }
+
+            //        else
+            //        {
+            //            return new List<User>(); // возврат нового пустого списка. 
+            //        }
+
+            #endregion
+            //TODO: Что делать при ошибке чтения файла 
+        }
+
+
 
 
 
         /// <summary>
         ///Метод Серилизации пользователей. Работает с со списком
         /// </summary>
-           public  void Save()
-            {
-                // обьект для работы с сериализацией
-                var formatter = new BinaryFormatter();
+        public void Save()
+        {
 
-                using (var fs = new FileStream("users.dat", FileMode.OpenOrCreate))
-                {
+            Save("users.dat", Users); //Наследуемый их абстрактного класса
+            #region //Переделанный метод
+            //// обьект для работы с сериализацией
+            //var formatter = new BinaryFormatter();
 
-                    formatter.Serialize(fs, Users);
-
-                    //TODO: Что делать при ошибке чтения файла 
-                }
-            }
-
-            /// <summary>
-            /// Загрузка данного пользователя
-            /// </summary>
-            #region перенесли метод в конструктор по умолчанию
-            /// <returns>Пользователя приложения</returns>
-            //public User Load()
+            //using (var fs = new FileStream("users.dat", FileMode.OpenOrCreate))
             //{
-            //    // обьект для работы с сериализацией
-            //    var formatter = new BinaryFormatter();
 
-            //    using (var fs = new FileStream("users.bat", FileMode.OpenOrCreate))
-            //    {
+            //    formatter.Serialize(fs, Users);
 
-            //        return formatter.Deserialize(fs) as User;
-            //      //  // Проверка на десариализацию обьекта
-            //      //if( formatter.Deserialize(fs) is User user)
-            //      //  {
-            //      //      return user;
-            //      //  }
-
-            //        //else
-            //        //  {
-            //        //     // throw new FileLoadException("Ошбка при загрузки файла пользователя",nameof(user));
-            //        //      return  null;
-            //        //  // return user;(
-            //    }
+            //    //TODO: Что делать при ошибке чтения файла 
             //}
             #endregion
-         
+        }
 
+        /// <summary>
+        /// Загрузка данного пользователя
+        /// </summary>
+        #region перенесли метод в конструктор по умолчанию
+        /// <returns>Пользователя приложения</returns>
+        //public User Load()
+        //{
+        //    // обьект для работы с сериализацией
+        //    var formatter = new BinaryFormatter();
+
+        //    using (var fs = new FileStream("users.bat", FileMode.OpenOrCreate))
+        //    {
+
+        //        return formatter.Deserialize(fs) as User;
+        //      //  // Проверка на десариализацию обьекта
+        //      //if( formatter.Deserialize(fs) is User user)
+        //      //  {
+        //      //      return user;
+        //      //  }
+
+        //        //else
+        //        //  {
+        //        //     // throw new FileLoadException("Ошбка при загрузки файла пользователя",nameof(user));
+        //        //      return  null;
+        //        //  // return user;(
+        //    }
+        //}
+        #endregion
+
+    }
 
     } //Конец класса
 
-}
