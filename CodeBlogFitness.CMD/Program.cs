@@ -1,4 +1,5 @@
 ﻿using CodeBlogFitness.BL.Controller;
+
 using CodeBlogFitness.BL.Model;
 using System;
 
@@ -10,7 +11,8 @@ namespace CodeBlogFitness.CMD
         // запуск программы
         static void Main(string[] args)
         {
-            zapuskator();
+            //zapuskator(); // основная программа
+            
         }
 
         /// <summary>
