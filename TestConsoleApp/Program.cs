@@ -27,12 +27,14 @@ namespace TestConsoleApp
             var collection = new List<int>();
 
             Console.WriteLine("Случайное заполнение Array листа ");
-            Random random = new Random();
+           // Random random = new Random();
 
             for (int i = 0; i < collection.Count; i++ )
             {
-                var teempp = random.Next(1, 1000);
+                Random random = new Random();
+                var teempp = random.Next(0, 1000);
                 collection.Add(teempp);
+                Console.WriteLine(teempp); // отлатка и вывод.
             }
 
             Console.WriteLine(collection.ToString());
@@ -48,7 +50,8 @@ namespace TestConsoleApp
         public static void VovodList<T>(List<T> list)
         {
             Console.WriteLine("Содержимое Листа");
-            
+            Console.WriteLine("Размер" + list.Count);
+
             foreach (var LestTemp in list)
             {
                 Console.WriteLine(LestTemp.ToString());
