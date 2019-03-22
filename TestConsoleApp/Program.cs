@@ -16,22 +16,47 @@ namespace TestConsoleApp
 
             // VovodList(zapolneneRandomList(10)); // вывод заполненого рандомом листа
 
-            Console.WriteLine(ZaprosLino1(temColection));
-
+           // Console.WriteLine(ZaprosLino1(temColection));
+            ZaprosLino1(temColection);
            // testChenieFaila(); // чтение из файлов.
 
             Console.ReadKey();
         }
 
 
-        public static string ZaprosLino1(List<int> collections)
+       
+
+        /// <summary>
+        /// Вывод результата полученного из запроса линг
+        /// </summary>
+        /// <param name="collections"></param>
+        /// <returns></returns>
+        public static object ZaprosLino1(List<int> collections)
         {
             // запрос Linq. Выбрать в обьект  item из колекции collections. Где item < 5. Выбрать обьект item и присвоить его в переменную
             var result = from item in collections
                          where item < 5
                          select item;
 
-            return result.ToString();
+            int coun = 0;
+            foreach (var item in result)
+            {
+                if (coun !=5)
+                {
+                    Console.Write($"{item},");
+                    coun++;
+                }
+                if (coun == 5)
+                {
+                    coun = 0;
+                    Console.WriteLine("\t\n");
+                }
+                //Console.WriteLine("\t\n");
+                //Console.Write(item);
+                //Console.WriteLine(item);
+            }
+            Console.WriteLine($"\t\nКоличество элементов в выборке { result.Count()}");
+            return result;
         }
 
         /// <summary>
@@ -50,7 +75,7 @@ namespace TestConsoleApp
             for (int i = 0; i < collection.Capacity; i++ )
             {
                 Random random = new Random();
-                var teempp = random.Next(0, 1000);
+                var teempp = random.Next(0, 10);
                 collection.Add(teempp);
                 Console.WriteLine(teempp); // отлатка и вывод.
             }
@@ -72,7 +97,7 @@ namespace TestConsoleApp
 
             foreach (var LestTemp in list)
             {
-                Console.WriteLine(LestTemp.ToString());
+                Console.WriteLine(LestTemp.ToString()); // тестовой вывод
                // Console.WriteLine("Размер "+ list.Count);
                // Console.WriteLine("\t\n");
             }
