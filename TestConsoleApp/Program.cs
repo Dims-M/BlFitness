@@ -32,9 +32,9 @@ namespace TestConsoleApp
 
             // testChenieFaila(); // чтение из файлов.
 
-            SserializationObject(ZaprosLino_Class());
+           // SserializationObject(ZaprosLino_Class()); //Сеарлизация с рандом заполнением
 
-            VovodListO( DeSerializationListProductTest());
+            VovodListO( DeSerializationListProductTest()); //вывод на консоль десиаризованный архив списка
 
             Console.ReadKey();
         }
@@ -86,6 +86,9 @@ namespace TestConsoleApp
             {
                 Console.WriteLine($"{item}");
             }
+
+            // колекция целых чисел. 
+            var selectCollection = collections.Select(product => product.Energy); // преобразуем из колекции collections в переменую product значениями Energy
 
             return collections;
         }
