@@ -34,7 +34,9 @@ namespace TestConsoleApp
 
            // SserializationObject(ZaprosLino_Class()); //Сеарлизация с рандом заполнением
 
-            VovodListO( DeSerializationListProductTest()); //вывод на консоль десиаризованный архив списка
+           // VovodListO( DeSerializationListProductTest()); //вывод на консоль десиаризованный архив списка
+
+            ZaprosLino_Class(); // вывод из листа List<ProductTest> list  с заданными параметрами.
 
             Console.ReadKey();
         }
@@ -80,7 +82,7 @@ namespace TestConsoleApp
             //var result2 = collections.Where(item => item < collections.).OrderByDescending(item => item);
             //                        // .Where(item => item % 2 == 0) // item "такой что" item  равен четному числу
             //                         //.OrderByDescending(item => item); // Сортировка  по убыванию 
-            Console.WriteLine("Заполнение  колекции завершено");
+            Console.WriteLine("Заполнение  колекции завершено по условию where item.Energy < 200 // выборка товаров больше 200;");
             Console.WriteLine($"Содержимое коллекции:");
             foreach (var item in result)
             {
@@ -88,9 +90,31 @@ namespace TestConsoleApp
             }
 
             // колекция целых чисел. 
-            var selectCollection = collections.Select(product => product.Energy); // преобразуем из колекции collections в переменую product значениями Energy
+            var selectCollection = 
+                collections.Select(product => product.Energy); // преобразуем из колекции collections в переменую product значениями Energy
+
+            Console.WriteLine($"Содержимое преобразуемой коллекции: со значениями Energy");
+            Console.WriteLine($"{selectCollection.ToString()}");
+
+            foreach (var item in selectCollection)
+            {
+                Console.WriteLine($"{item}");
+            }
+
+            //сортировка по значениям Energy
+
+           // var orderByCollection = collections.OrderBy(ProductEn => ProductEn.Energy); //  сортровка по уменьшению
+            var orderByCollection = collections.OrderByDescending(ProductEn => ProductEn.Energy); //  сортровка по уменьшению
+
+            Console.WriteLine($"Сортировка по уменьшению Energy");
+            
+            foreach (var item in orderByCollection)
+            {
+                Console.WriteLine($"{item}");
+            }
 
             return collections;
+           // return ()selectCollection;
         }
 
         /// <summary>
