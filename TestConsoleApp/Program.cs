@@ -38,6 +38,9 @@ namespace TestConsoleApp
 
             ZaprosLino_Class(); // вывод из листа List<ProductTest> list  с заданными параметрами.
 
+            //VovodListO(ReversColecctionss(ZaprosLino_Class())); // реверс списка колекции
+
+
             Console.ReadKey();
         }
 
@@ -103,8 +106,8 @@ namespace TestConsoleApp
 
             //сортировка по значениям Energy
 
-           // var orderByCollection = collections.OrderBy(ProductEn => ProductEn.Energy); //  сортровка по уменьшению
-            var orderByCollection = collections.OrderByDescending(ProductEn => ProductEn.Energy); //  сортровка по уменьшению
+           // var orderByCollectionМ = collections.OrderBy(ProductEn => ProductEn.Energy); //  сортровка по уменьшению
+            var orderByCollection = collections.OrderByDescending(ProductEn => ProductEn.Energy); //  сортровка по уменьшению + упорядачали по имени в обратном порядке
 
             Console.WriteLine($"Сортировка по уменьшению Energy");
             
@@ -113,8 +116,50 @@ namespace TestConsoleApp
                 Console.WriteLine($"{item}");
             }
 
+            var orderByCollectionМ = collections.OrderBy(ProductEn => ProductEn.Energy).ThenByDescending(produkt => produkt.Name); //  сортровка по уменьшению
+            Console.WriteLine($"Сортировка по возрастанию Energy+ при одинаковых значениях упорядоватся бужут по именам");
+
+            foreach (var item in orderByCollectionМ)
+            {
+                Console.WriteLine($"{item}");
+                
+            }
+
+            //Групировка выборки
+            var groupbuCollection = collections.GroupBy(viborkaProdokta => viborkaProdokta.Energy);
+
+            foreach(var grop in groupbuCollection)
+            {
+                Console.WriteLine($"Ключ:{grop.Key}");
+                foreach (var item in grop )
+                {
+                    Console.WriteLine($"\t{item}");
+                }
+                Console.WriteLine();
+            }
+
+            // проверка все ли элементы в колекции содержат нужное значение item.Energy == 120
+            var all = collections.All( item => item.Energy == 120);
+
+            var any = collections.Any(item =>);
+            
+
             return collections;
            // return ()selectCollection;
+        }
+
+        /// <summary>
+        /// реверс колекции
+        /// </summary>
+        /// <param name="list">Обьект типа List <ProductTest></param>
+        /// <returns></returns>
+        public static List<ProductTest> ReversColecctionss(List<ProductTest> list)
+        {
+            Console.WriteLine("Реверс колекции:");
+
+           list.Reverse();
+
+            return list;
         }
 
         /// <summary>
