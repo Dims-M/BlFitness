@@ -121,8 +121,7 @@ namespace TestConsoleApp
 
             foreach (var item in orderByCollectionМ)
             {
-                Console.WriteLine($"{item}");
-                
+                Console.WriteLine($"{item}"); 
             }
 
             //Групировка выборки
@@ -130,28 +129,74 @@ namespace TestConsoleApp
 
             foreach(var grop in groupbuCollection)
             {
-                Console.WriteLine($"Ключ:{grop.Key}");
+                Console.Write($"Ключ:{grop.Key}");
                 foreach (var item in grop )
-                {
-                    Console.WriteLine($"\t{item}");
+                { 
+                    Console.WriteLine($"***{item}");
                 }
                 Console.WriteLine();
             }
 
             // проверка все ли элементы в колекции содержат нужное значение item.Energy == 120
             var all = collections.All( item => item.Energy == 120);
+            Console.WriteLine($"Вывод выборки после условия All:{all}");
 
-            var any = collections.Any(item =>);
-            
+            // проверка все ли элементы в колекции содержат хотябы одно из значение item.Energy == 120
+            var any = collections.Any(item =>item.Energy ==120);
+           Console.WriteLine($"Вывод выборки после условия Аne:{any}");
 
+            //вхождение нужного значения в колекции . Возврат булевского значения
+            var contains = collections.Contains(collections[5]);
+            Console.WriteLine($"Вывод выборки после условия Аne:{any}");
+
+            //Обьединение колекций
+
+            var razmerIntArrey = 10;
+            var numbers1 = new int[razmerIntArrey];  // пустой интовый массив
+            int[] numbers2 = new int[razmerIntArrey]; // пустой интовый массив
+
+            for (int i = 0; i< razmerIntArrey; i++ )
+            {
+                numbers1[i] = RandomInt(razmerIntArrey);
+                numbers2[i] = RandomInt(razmerIntArrey);
+                Console.WriteLine(numbers1[i]);
+                Console.WriteLine(numbers2[i]);
+            }
+
+            foreach (int tempMass1 in numbers1)
+            {
+                Console.WriteLine($"Содержимое 1 массива {tempMass1}");
+            }
+
+            Console.ReadKey();
+
+            foreach (int tempMass2 in numbers2)
+            {
+                Console.WriteLine($"Содержимое 2 массива {tempMass2}");
+            }
+
+            Console.ReadKey();
+
+
+
+
+            Console.WriteLine("Обьеденение двух интовых списков ");
+           var unionList = UnionList(numbers1, numbers2);
+
+            foreach (var grop in unionList)
+            {
+                Console.WriteLine(grop);
+            }
+
+            Console.ReadKey();
             return collections;
            // return ()selectCollection;
         }
 
         /// <summary>
-        /// реверс колекции
+        /// Ревер колекции
         /// </summary>
-        /// <param name="list">Обьект типа List <ProductTest></param>
+        /// <param name="list">Укажите нужную колекцию. </param>
         /// <returns></returns>
         public static List<ProductTest> ReversColecctionss(List<ProductTest> list)
         {
@@ -160,6 +205,19 @@ namespace TestConsoleApp
            list.Reverse();
 
             return list;
+        }
+
+        /// <summary>
+        /// обьединение 2 листа. Возращает обьеденный лист
+        /// </summary>
+        /// <param name="list">Лист для обьеденения №1 </param>
+        /// <param name="list2">Лист для обьеденения №1</param>
+        /// <returns></returns>
+        public static List<int> UnionList(int [] list1, int [] list2)
+        {
+            var unionList = list1.Union(list2);
+
+            return unionList.ToList();
         }
 
         /// <summary>
@@ -262,10 +320,27 @@ namespace TestConsoleApp
         }
 
         /// <summary>
-        /// Вывод коллекции
+        /// Рандомное интовое заполнение.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="list"></param>
+        /// <param name="count">В качестве параметра укажите размер рандома</param>
+        /// <returns></returns>
+        public static int RandomInt(int count)
+        {
+            int _count = 0;
+
+            Random random = new Random();
+
+            for (int i =0; i< count; i++)
+            {
+                Thread.Sleep(25);
+               
+                _count += random.Next(1, 1000);
+            }
+
+            return _count;
+        }
+
+         
         public static void VovodList(List<int> list)
         {
             Console.WriteLine("Содержимое Листа");
