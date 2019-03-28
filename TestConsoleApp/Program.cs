@@ -185,6 +185,17 @@ namespace TestConsoleApp
                 Console.WriteLine(grop);
             }
 
+            //Сравнение в 2х массивах
+            var intersect = numbers1.Intersect(numbers2);
+
+            Console.WriteLine("Сравнение двух интовых списков ");
+
+            foreach (var SravnenieMass in intersect)
+            {
+                Console.WriteLine(SravnenieMass);
+            }
+
+
             Console.ReadKey();
 
             return collections;
