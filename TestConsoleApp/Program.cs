@@ -157,9 +157,9 @@ namespace TestConsoleApp
 
             for (int i = 0; i< razmerIntArrey; i++ )
             {
-                numbers1[i] = RandomInt(razmerIntArrey);
+                numbers1[i] = RandomInt(razmerIntArrey); //РАндом заполнение массива.
                 numbers2[i] = RandomInt(razmerIntArrey);
-                Console.WriteLine(numbers1[i]);
+                Console.WriteLine(numbers1[i]); //тест вывод.
                 Console.WriteLine(numbers2[i]);
             }
 
@@ -177,10 +177,7 @@ namespace TestConsoleApp
 
             Console.ReadKey();
 
-
-
-
-            Console.WriteLine("Обьеденение двух интовых списков ");
+           Console.WriteLine("Обьеденение двух интовых списков ");
            var unionList = UnionList(numbers1, numbers2);
 
             foreach (var grop in unionList)
@@ -189,6 +186,7 @@ namespace TestConsoleApp
             }
 
             Console.ReadKey();
+
             return collections;
            // return ()selectCollection;
         }
