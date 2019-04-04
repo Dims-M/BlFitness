@@ -188,14 +188,21 @@ namespace TestConsoleApp
             //Сравнение в 2х массивах
             var intersect = numbers1.Intersect(numbers2);
 
-            Console.WriteLine("Сравнение двух интовых списков ");
+            Console.WriteLine("Сравнение двух интовых списков...... ");
+            Console.WriteLine($"Количесво элементов = " + intersect.Count());
 
             foreach (var SravnenieMass in intersect)
             {
+                //Console.WriteLine($""+SravnenieMass.ToString());
                 Console.WriteLine(SravnenieMass);
+                
             }
 
 
+            var except = numbers1.Except(numbers2);
+            Console.WriteLine("Проверяем раздность двух масиивов");
+
+            Console.WriteLine("для продолжение нажмите любую кнопку");
             Console.ReadKey();
 
             return collections;
