@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Collections;
 
 namespace TestConsolle2
 {
@@ -24,14 +24,39 @@ namespace TestConsolle2
         /// <summary>
         /// Остается ли отстаток при делении 2 чисел.
         /// </summary>
-        /// <param name="i">Число</param>
-        /// <param name="j">Делим на число</param>
+        /// <param name="i">ТекущиеЧисло</param>
+        /// <param name="j">Число на кокое делим</param>
         /// <returns></returns>
         public static bool isDivided( this int i, int j)
         {
-            Console.WriteLine("Проверяем  остаток на деление.");
+            Console.WriteLine($"Проверяем  остаток на деление 2 чисел. \t\n" +
+                $"Основное число{i} делим на {j} \t\n" +
+                $"Результат ={i % j}, {i % j == 0}");
             return i % j == 0; // проверяем  делится на остаток
         }
 
+        /// <summary>
+        /// Приведение любой коллекции к строке.
+        /// </summary>
+        /// <param name="collection">Нужная коллекция</param>
+        /// <returns></returns>
+        public static string CovencertToString( this IEnumerable collection)
+        {
+            var result = "";
+            foreach (var item in collection)
+            {
+                result += item.ToString()+"," ;
+            }
+            return result;
+        }
+
+
+        //Методы разширения для класса Road
+
+        public static Road CreateRandomRoad(this Road road, int min, int max)
+        {
+            var Road 
+            return null;
+        }
     }
 }
