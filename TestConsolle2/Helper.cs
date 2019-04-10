@@ -55,7 +55,7 @@ namespace TestConsolle2
 
         public static Road CreateRandomRoad(this Road road, int min, int max)
         {
-            var Road 
+           // var Road;
             return null;
         }
     }

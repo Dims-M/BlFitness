@@ -12,7 +12,7 @@
         //Переопределяем метод ToString
         public override string ToString()
         {
-            return $"Дорога {} , Длина {Lenght}" ;
+            return $"Дорога {Number} , Длина {Lenght}" ;
         }
 
     }
