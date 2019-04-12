@@ -9,9 +9,17 @@
         Topmost = "False" Icon= "./Resources/103540.png" >
 
 
+    <StackPanel Orientation="Vertical">
+        
+        <Label x:Name="ferst_text"  Content="PervoNah" HorizontalAlignment="Center"  FontFamily="Showcard Gothic" />
+        <Label x:Name="label1" Content="Label"/>
+        <TextBox Height="40" TextWrapping="Wrap" Text="." HorizontalAlignment="Center" Width="300"/>
+        <Button x:Name="btnMessageBox" Content="Открыть окно" Width="200" Margin="0,20"/>
 
-    <Grid>
-        <DataGrid HorizontalAlignment="Left" Height="100" Margin="194,144,0,0" VerticalAlignment="Top" Width="100"/>
 
-    </Grid>
+    </StackPanel>
+
+    
+    
+    
 </Window>
