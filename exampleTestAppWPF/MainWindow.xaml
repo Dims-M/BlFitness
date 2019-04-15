@@ -8,28 +8,18 @@
         Title="TestMainWindow" Height="450" Width="800" ResizeMode="NoResize"
         Topmost = "False" Icon= "./Resources/103540.png" >
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="179*"/>
-            <ColumnDefinition Width="614*"/>
-        </Grid.ColumnDefinitions>
-        <ScrollViewer Margin="48,20,32.2,245">
-            <Grid>
-                <Button Content="Button" HorizontalAlignment="Left" Margin="0,0,-16.6,0" VerticalAlignment="Top" Width="75" Height="19"/>
-                <Button Content="Button" HorizontalAlignment="Left" Margin="0,43,-16.6,0" VerticalAlignment="Top" Width="75" Height="20"/>
-                <Button Content="Button" HorizontalAlignment="Left" Margin="0,86,-16.6,0" VerticalAlignment="Top" Width="75" Height="21"/>
-                <Button Content="Button" HorizontalAlignment="Left" Margin="0,130,-16.6,0" VerticalAlignment="Top" Width="75" Height="19"/>
-                <Button Content="Button" HorizontalAlignment="Left" Margin="0,170,-16.6,0" VerticalAlignment="Top" Width="75" Height="16" RenderTransformOrigin="0.528,-0.05"/>
-                <Button Content="Button" HorizontalAlignment="Left" Margin="0,207,-16.6,0" VerticalAlignment="Top" Width="75" Height="19"/>
-                <Button Content="Button" HorizontalAlignment="Left" Margin="0,250,-16.6,0" VerticalAlignment="Top" Width="75" Height="19"/>
-                <Button Content="Button" HorizontalAlignment="Left" Margin="0,285,-16.6,0" VerticalAlignment="Top" Width="75" Height="20" RenderTransformOrigin="0.597,0.442"/>
-                <Button Content="Button" HorizontalAlignment="Left" Margin="0,328,-16.6,0" VerticalAlignment="Top" Width="75" Height="20" RenderTransformOrigin="0.683,0.821"/>
-                <Button Content="Button" HorizontalAlignment="Left" Margin="0,362,-16.6,0" VerticalAlignment="Top" Width="75" Height="18" RenderTransformOrigin="0.448,-0.189"/>
+    <DockPanel>
+        <Label x:Name="label1" Content="Верх" DockPanel.Dock="Top" />
+        <Label x:Name="label2" Content="вниз" DockPanel.Dock="Bottom" />
+        <Label x:Name="label3" Content="лево" DockPanel.Dock="Left" />
+        <Label x:Name="label4" Content="право" DockPanel.Dock="Right" />
+        <Label x:Name="label5"  >
+            
+        </Label>
+        <Button Content="Button" Height="30" Width="75"/>
 
 
-            </Grid>
-        </ScrollViewer>
+    </DockPanel>
 
 
-    </Grid>
 </Window>
