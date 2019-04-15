@@ -8,18 +8,12 @@
         Title="TestMainWindow" Height="450" Width="800" ResizeMode="NoResize"
         Topmost = "False" Icon= "./Resources/103540.png" >
 
-
-    <StackPanel Orientation="Vertical">
-        
-        <Label x:Name="ferst_text"  Content="PervoNah" HorizontalAlignment="Center"  FontFamily="Showcard Gothic" />
-        <Label x:Name="label1" Content="Label"/>
-        <TextBox Height="40" TextWrapping="Wrap" Text="." HorizontalAlignment="Center" Width="300"/>
-        <Button x:Name="btnMessageBox" Content="Открыть окно" Width="200" Margin="0,20" Click="BtnMessageBox_Click"/>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="106*"/>
+            <ColumnDefinition Width="291*"/>
+        </Grid.ColumnDefinitions>
 
 
-    </StackPanel>
-
-    
-    
-    
+    </Grid>
 </Window>
