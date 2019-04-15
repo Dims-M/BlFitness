@@ -14,7 +14,7 @@
         <Label x:Name="ferst_text"  Content="PervoNah" HorizontalAlignment="Center"  FontFamily="Showcard Gothic" />
         <Label x:Name="label1" Content="Label"/>
         <TextBox Height="40" TextWrapping="Wrap" Text="." HorizontalAlignment="Center" Width="300"/>
-        <Button x:Name="btnMessageBox" Content="Открыть окно" Width="200" Margin="0,20"/>
+        <Button x:Name="btnMessageBox" Content="Открыть окно" Width="200" Margin="0,20" Click="BtnMessageBox_Click"/>
 
 
     </StackPanel>

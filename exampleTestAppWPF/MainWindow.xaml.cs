@@ -28,5 +28,11 @@ namespace exampleTestAppWPF
            // this.Title = "testProga";
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen; //устанавливаем локацию запуска программы
         }
+
+       //Кнопка 
+        private void BtnMessageBox_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
