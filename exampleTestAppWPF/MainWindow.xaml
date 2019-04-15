@@ -9,15 +9,22 @@
         Topmost = "False" Icon= "./Resources/103540.png" >
 
     <DockPanel>
-        <Label x:Name="label1" Content="Верх" DockPanel.Dock="Top" />
-        <Label x:Name="label2" Content="вниз" DockPanel.Dock="Bottom" />
-        <Label x:Name="label3" Content="лево" DockPanel.Dock="Left" />
-        <Label x:Name="label4" Content="право" DockPanel.Dock="Right" />
-        <Label x:Name="label5"  >
+        <Menu DockPanel.Dock="Top">
             
-        </Label>
-        <Button Content="Button" Height="30" Width="75"/>
+            <MenuItem x:Name ="menuFile" Header="Файл">
+                <MenuItem x:Name="createNewFile" Header="Создать новый файл."/>
 
+                <MenuItem x:Name="exitApp" Header="Выход"/>
+            </MenuItem>
+            
+            <MenuItem x:Name ="menuFile1" Header="Test">
+                
+            </MenuItem>
+        </Menu>  <!--Верние меню-->
+            
+
+        <TextBox x:Name ="textBox" Height="782" Margin="0,34,0,1"/>
+        
 
     </DockPanel>
 
