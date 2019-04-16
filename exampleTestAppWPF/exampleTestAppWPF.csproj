@@ -100,5 +100,11 @@
   <ItemGroup>
     <Resource Include="Resources\103540.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\open-file.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\exit.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
