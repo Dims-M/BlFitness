@@ -12,14 +12,12 @@
         <Menu DockPanel.Dock="Top">
             
             <MenuItem x:Name ="menuFile" Header="Файл">
-                <MenuItem x:Name="createNewFile" Header="Создать новый файл."/>
+                <MenuItem x:Name="createNewFile" Header="Создать новый файл.">
                 <MenuItem x:Name="exitApp" Header="Выход"/>
                 <MenuItem.Icon>
                     <Image Source="./Resources/openFile.ico"/>
                 </MenuItem.Icon>
                 <!--Картинка к вернеему меню -->
-           
-            
             </MenuItem>
             
             <MenuItem x:Name="openNewFile" Header="Открыть новый файл.">
@@ -29,20 +27,20 @@
                     </MenuItem.Icon>
                 </MenuItem>
 
-            <MenuItem x:Name="SaveNewFile" Header="Cохранить новый файл.">
-
+            <MenuItem x:Name="SaveNewFile" Header="Cохранить новый файл." Click="SaveFile_Click">
+C
                 <MenuItem.Icon>
                     <Image Source="./Resources/open-file.ico"/>
                 </MenuItem.Icon>
             </MenuItem>
-            <MenuItem x:Name="exit" Header="Выход.">
+            <MenuItem x:Name="exit" Header="Выход." Click="ExitProgram_Click">
 
                 <MenuItem.Icon>
                     <Image Source="./Resources/exit.ico"/>
                 </MenuItem.Icon>
             </MenuItem>
 
-
+          </MenuItem>
         </Menu>  <!--Верние меню-->
             
 
