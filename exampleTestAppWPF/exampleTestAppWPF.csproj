@@ -94,7 +94,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\openFile.ico" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\103540.png" />
   </ItemGroup>

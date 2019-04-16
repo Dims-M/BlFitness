@@ -13,13 +13,18 @@
             
             <MenuItem x:Name ="menuFile" Header="Файл">
                 <MenuItem x:Name="createNewFile" Header="Создать новый файл."/>
-
+               
                 <MenuItem x:Name="exitApp" Header="Выход"/>
+               
+                <MenuItem.Icon>
+                    <Image Source="./Resources/openFile.ico"/>
+                </MenuItem.Icon>
+                <!--Картинка к вернеему меню -->
+
             </MenuItem>
+
+            <MenuItem x:Name ="menuFile1" Header="Test"></MenuItem>
             
-            <MenuItem x:Name ="menuFile1" Header="Test">
-                
-            </MenuItem>
         </Menu>  <!--Верние меню-->
             
 
