@@ -31,6 +31,29 @@ namespace exampleTestAppWPF
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen; //устанавливаем локацию запуска программы
         }
 
-      
+        private void OpenNewFile_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CreateNewFile_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ExitApp_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void SaveNewFile_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
